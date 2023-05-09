@@ -13,11 +13,14 @@ export class SearchComponent {
   hitAmount: any;
   paths: any;
   text: any;
+  linkFile: any;
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {
     this.headers = new HttpHeaders()
       .set('content-type', 'application/json')
       .set('Access-Control-Allow-Origin', '*');
+
+    this.linkFile = 'file:///';
   }
 
   ngOnInit() {

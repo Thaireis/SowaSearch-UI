@@ -1,13 +1,13 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  selector: 'app-search-field',
+  templateUrl: './search-field.component.html',
+  styleUrls: ['./search-field.component.css'],
 })
-export class HomeComponent {
+export class SearchFieldComponent {
   inputs: any;
 
   constructor(private http: HttpClient, private router: Router) {}

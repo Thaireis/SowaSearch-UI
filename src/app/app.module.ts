@@ -6,9 +6,15 @@ import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
+import { SearchFieldComponent } from './search-field/search-field.component';
 
 @NgModule({
-  declarations: [AppComponent, SearchComponent, HomeComponent],
+  declarations: [
+    AppComponent,
+    SearchComponent,
+    HomeComponent,
+    SearchFieldComponent,
+  ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
