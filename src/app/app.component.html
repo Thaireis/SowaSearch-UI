@@ -1,19 +1,19 @@
-<div class="container">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Age</th>
-        <th>Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let student of students">
-        <td>{{student.id}}</td>
-        <td>{{student.name}}</td>
-        <td>{{student.email}}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<h1>it works</h1>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Website Tim</title>
+</head>
+
+<body>
+  <a class="navbar-brand" href="/home">Home</a>
+  <br>
+  <br>
+  <a class="navbar-brand" href="/search">Search</a>
+  <router-outlet></router-outlet>
+  <h1 class="bottom">©2016 Sowatec AG</h1>
+</body>
+
+</html>

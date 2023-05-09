@@ -12,9 +12,4 @@ export class AppComponent {
   students: any;
 
   constructor(private http: HttpClient, private router: Router) {}
-
-  ngOnInit() {
-    let response = this.http.get('http://localhost:8081/students');
-    response.subscribe((data) => (this.students = data));
-  }
 }
