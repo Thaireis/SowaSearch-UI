@@ -1,4 +1,13 @@
 <h1>Search</h1>
 <div class="container">
-    <p>{{inputs}}</p>
+    <p>UserInput = <b>{{input}}</b></p>
+    <p>Anzahl gefundene Files = <b>{{hitAmount}}</b></p>
+    <table class="table">
+        <tbody>
+            <tr *ngFor="let path of paths">
+                <td>{{path}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>{{text}}</p>
 </div>

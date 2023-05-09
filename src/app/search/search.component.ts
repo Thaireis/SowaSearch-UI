@@ -8,9 +8,11 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent {
-  inputs: any;
-  input: any;
   headers: any;
+  input: any;
+  hitAmount: any;
+  paths: any;
+  text: any;
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {
     this.headers = new HttpHeaders()
@@ -23,12 +25,42 @@ export class SearchComponent {
     console.log(this.input);
 
     this.http
+      .get('http://localhost:8081/inputs?int=' + this.input)
+      .subscribe((data) => {
+        console.log(data);
+        this.hitAmount = data;
+      });
+
+    this.http
+      .get('http://localhost:8081/inputs?path=' + this.input)
+      .subscribe((data) => {
+        console.log(data);
+        this.paths = data;
+      });
+
+    this.http
       .get('http://localhost:8081/inputs?post=' + this.input, {
         responseType: 'text',
       })
       .subscribe((data) => {
         console.log(data);
-        this.inputs = data;
+        this.text = data;
       });
   }
+
+  /*
+  ngOnInit() {
+    this.input = this.route.snapshot.params['userInput'];
+    console.log(this.input);
+
+    this.http
+      .get('http://localhost:8081/inputs?post=' + this.input, {
+        responseType: 'text',
+      })
+      .subscribe((data) => {
+        console.log(data);
+        //this.text = data;
+      });
+  }
+  */
 }
