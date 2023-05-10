@@ -8,6 +8,10 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'search', component: SearchComponent },
   { path: 'search/:input', component: SearchComponent },
+  {
+    path: 'search/:input/:filterPath/:filterName/:filterType',
+    component: SearchComponent,
+  },
 ];
 
 @NgModule({

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -8,6 +8,10 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 })
 export class PopUpComponent {
   closeResult = '';
+
+  filterPath: any;
+  filterName: any;
+  filterType: any;
 
   constructor(private modalService: NgbModal) {}
 
@@ -35,4 +39,32 @@ export class PopUpComponent {
       return `with: ${reason}`;
     }
   }
+
+  setFilter(filter: {
+    filterPath: String;
+    filterName: String;
+    filterType: String;
+  }) {
+    this.filterPath = filter.filterPath;
+    this.filterName = filter.filterName;
+    this.filterType = filter.filterType;
+    console.log(
+      this.filterPath + ' / ' + this.filterName + ' / ' + this.filterType
+    );
+  }
+
+  /*
+  onSubmit(friend: { name: string; age: number }) {
+    console.log(friend);
+    const headers = new HttpHeaders({ myHeader: 'WebsiteTim' });
+    this.http
+      .post('http://localhost:8080/api/v1/friends/add/', friend, {
+        headers: headers,
+      })
+      .subscribe((data) => {
+        console.log(data);
+      });
+    this.router.navigateByUrl('/home');
+  }
+  */
 }

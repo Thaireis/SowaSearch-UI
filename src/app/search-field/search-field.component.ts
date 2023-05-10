@@ -1,5 +1,4 @@
-import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,11 +7,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./search-field.component.css'],
 })
 export class SearchFieldComponent {
-  inputs: any;
-
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private router: Router) {}
 
   onSubmit(input: { userInput: string }) {
+    //http://localhost:4200/search;userInput=arcana
     this.router.navigate(['/search', input]);
   }
 }

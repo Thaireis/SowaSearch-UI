@@ -15,36 +15,67 @@ export class SearchComponent {
   text: any;
   linkFile: any;
 
+  filterURL: any;
+  filterPath: any;
+  filterName: any;
+  filterType: any;
+
   constructor(private http: HttpClient, private route: ActivatedRoute) {
     this.headers = new HttpHeaders()
       .set('content-type', 'application/json')
       .set('Access-Control-Allow-Origin', '*');
 
     this.linkFile = 'file:///';
+
+    this.filterURL = 'http://localhost:8081/inputs/filter?post=';
   }
 
   ngOnInit() {
     this.input = this.route.snapshot.params['userInput'];
+    this.filterPath = 'D:/DATA/Lucene_test';
+    this.filterName = 'test2';
+    this.filterType = '.txt';
     console.log(this.input);
+    console.log(
+      'Filter: \n' +
+        this.filterPath +
+        ' | ' +
+        this.filterName +
+        ' | ' +
+        this.filterType
+    );
 
     this.http
-      .get('http://localhost:8081/inputs?int=' + this.input)
+      .get(
+        'http://localhost:8081/inputs/filter/int?post=' +
+          this.input +
+          '&filterPath=D:/DATA/Lucene_test&filterName=test2&filterType=.txt'
+      )
       .subscribe((data) => {
         console.log(data);
         this.hitAmount = data;
       });
 
     this.http
-      .get('http://localhost:8081/inputs?path=' + this.input)
+      .get(
+        'http://localhost:8081/inputs/filter/paths?post=' +
+          this.input +
+          '&filterPath=D:/DATA/Lucene_test&filterName=test2&filterType=.txt'
+      )
       .subscribe((data) => {
         console.log(data);
         this.paths = data;
       });
 
     this.http
-      .get('http://localhost:8081/inputs?post=' + this.input, {
-        responseType: 'text',
-      })
+      .get(
+        'http://localhost:8081/inputs/filter/result?post=' +
+          this.input +
+          '&filterPath=D:/DATA/Lucene_test&filterName=test2&filterType=.txt',
+        {
+          responseType: 'text',
+        }
+      )
       .subscribe((data) => {
         console.log(data);
         this.text = data;
