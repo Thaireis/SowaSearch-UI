@@ -1,4 +1,3 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -9,8 +8,8 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
   inputs: any;
-
-  constructor(private http: HttpClient, private router: Router) {}
+  closeResult = '';
+  constructor(private router: Router) {}
 
   onSubmit(input: { userInput: string }) {
     this.router.navigate(['/search', input]);

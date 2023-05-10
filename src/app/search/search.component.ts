@@ -50,20 +50,4 @@ export class SearchComponent {
         this.text = data;
       });
   }
-
-  /*
-  ngOnInit() {
-    this.input = this.route.snapshot.params['userInput'];
-    console.log(this.input);
-
-    this.http
-      .get('http://localhost:8081/inputs?post=' + this.input, {
-        responseType: 'text',
-      })
-      .subscribe((data) => {
-        console.log(data);
-        //this.text = data;
-      });
-  }
-  */
 }
