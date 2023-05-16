@@ -11,31 +11,28 @@
     </div>
     <div class="modal-body">
         <form #filterForm="ngForm" (ngSubmit)="setFilter(filterForm.value)">
-            <div class="form-group">
-                <div class="input-group">
-                    <label for="filterPath">Path</label>
-                    <input id="filterPath" name="filterPath" ngModel type=text class="form-control">
-                </div>
-                <br>
-                <div class="input-group">
-                    <label for="filterName">Name</label>
-                    <input id="filterName" name="filterName" ngModel type=text class="form-control">
-                </div>
-                <br>
-                <div class="input-group">
-                    <label for="filterType">Type</label>
-                    <select id="filterType" name="filterType" ngModel class="form-select"
-                        aria-label="Default select example" [value]="null">
-                        <option value=".txt">Text</option>
-                        <option value=".json">JSON</option>
-                        <option value=".java">Java</option>
-                        <option value=".xml">XML</option>
-                        <option value=".xlsx">Excel</option>
-                        <option value=".pdf">PDF</option>
-                    </select>
-                </div>
-                <br>
-                <!--
+            <div>
+                <label for="filterPath">Path</label>
+                <input id="filterPath" name="filterPath" ngModel type=text placeholder={{message1}}>
+            </div>
+            <div>
+                <label for="filterName">Name</label>
+                <input id="filterName" name="filterName" ngModel type=text placeholder={{message2}}>
+            </div>
+            <div>
+                <label for="filterType">Type</label>
+                <select id="filterType" name="filterType" ngModel>
+                    <option value="" disabled selected hidden>{{message3}}</option>>
+                    <option value=".txt">Text</option>
+                    <option value=".json">JSON</option>
+                    <option value=".java">Java</option>
+                    <option value=".xml">XML</option>
+                    <option value=".xlsx">Excel</option>
+                    <option value=".pdf">PDF</option>
+                </select>
+            </div>
+
+            <!--
                 <div class="input-group">
                     <label for="date">Date</label>
                     <input id="date" class="form-control" placeholder="yyyy-mm-dd" name="d" ngbDatepicker
@@ -58,9 +55,8 @@
                     </button>
                 </div>
                 -->
-            </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-success" (click)="modal.close('Save click')">
+                <button type="submit" class="btn btn-success" (click)="modal.close('Save click');">
                     Save
                 </button>
                 <button type="button" class="btn btn-danger" (click)="modal.dismiss('Cross click')">
@@ -77,6 +73,3 @@
             d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
     </svg>
 </button>
-<p>{{filterPath}}</p>
-<p>{{filterName}}</p>
-<p>{{filterType}}</p>

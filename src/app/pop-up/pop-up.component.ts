@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { FilterService } from '../filter.service';
 
 @Component({
   selector: 'app-pop-up',
@@ -13,7 +14,14 @@ export class PopUpComponent {
   filterName: any;
   filterType: any;
 
-  constructor(private modalService: NgbModal) {}
+  message1: string = '';
+  message2: string = '';
+  message3: string = '';
+
+  constructor(
+    private modalService: NgbModal,
+    private filterService: FilterService
+  ) {}
 
   open(content: any) {
     this.modalService
@@ -40,6 +48,18 @@ export class PopUpComponent {
     }
   }
 
+  ngOnInit() {
+    this.filterService.currentMessage1.subscribe(
+      (message1) => (this.message1 = message1)
+    );
+    this.filterService.currentMessage2.subscribe(
+      (message2) => (this.message2 = message2)
+    );
+    this.filterService.currentMessage3.subscribe(
+      (message3) => (this.message3 = message3)
+    );
+  }
+
   setFilter(filter: {
     filterPath: String;
     filterName: String;
@@ -51,20 +71,9 @@ export class PopUpComponent {
     console.log(
       this.filterPath + ' / ' + this.filterName + ' / ' + this.filterType
     );
-  }
 
-  /*
-  onSubmit(friend: { name: string; age: number }) {
-    console.log(friend);
-    const headers = new HttpHeaders({ myHeader: 'WebsiteTim' });
-    this.http
-      .post('http://localhost:8080/api/v1/friends/add/', friend, {
-        headers: headers,
-      })
-      .subscribe((data) => {
-        console.log(data);
-      });
-    this.router.navigateByUrl('/home');
+    this.filterService.changeMessage1(this.filterPath);
+    this.filterService.changeMessage2(this.filterName);
+    this.filterService.changeMessage3(this.filterType);
   }
-  */
 }

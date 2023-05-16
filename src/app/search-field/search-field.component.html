@@ -1,3 +1,11 @@
+<!--
+<button (click)="newMessage()" class="button">Message</button>
+
+<p>{{message1}}</p>
+<p>{{message2}}</p>
+<p>{{message3}}</p>
+-->
+
 <form #inputForm="ngForm" (ngSubmit)="onSubmit(inputForm.value)">
     <label class="searchField">
         <input id="userInput" name="userInput" ngModel type="text" placeholder="Search" class="form-control form-group">

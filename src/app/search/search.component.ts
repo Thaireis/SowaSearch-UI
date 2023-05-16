@@ -1,13 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FilterService } from '../filter.service';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
 })
-export class SearchComponent {
+export class SearchComponent implements OnInit {
   headers: any;
   input: any;
   hitAmount: any;
@@ -15,26 +16,26 @@ export class SearchComponent {
   text: any;
   linkFile: any;
 
-  filterURL: any;
   filterPath: any;
   filterName: any;
   filterType: any;
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {
-    this.headers = new HttpHeaders()
-      .set('content-type', 'application/json')
-      .set('Access-Control-Allow-Origin', '*');
-
     this.linkFile = 'file:///';
-
-    this.filterURL = 'http://localhost:8081/inputs/filter?post=';
   }
 
   ngOnInit() {
-    this.input = this.route.snapshot.params['userInput'];
-    this.filterPath = 'D:/DATA/Lucene_test';
-    this.filterName = 'test2';
-    this.filterType = '.txt';
+    /*
+    const headers = new HttpHeaders()
+      .set('content-type', 'application/json')
+      .set('Access-Control-Allow-Origin', '*');
+    */
+
+    this.input = this.route.snapshot.params['input'];
+    this.filterPath = this.route.snapshot.params['path'];
+    this.filterName = this.route.snapshot.params['name'];
+    this.filterType = this.route.snapshot.params['type'];
+
     console.log(this.input);
     console.log(
       'Filter: \n' +
@@ -49,7 +50,12 @@ export class SearchComponent {
       .get(
         'http://localhost:8081/inputs/filter/int?post=' +
           this.input +
-          '&filterPath=D:/DATA/Lucene_test&filterName=test2&filterType=.txt'
+          '&filterPath=' +
+          this.filterPath +
+          '&filterName=' +
+          this.filterName +
+          '&filterType=' +
+          this.filterType
       )
       .subscribe((data) => {
         console.log(data);
@@ -60,25 +66,35 @@ export class SearchComponent {
       .get(
         'http://localhost:8081/inputs/filter/paths?post=' +
           this.input +
-          '&filterPath=D:/DATA/Lucene_test&filterName=test2&filterType=.txt'
+          '&filterPath=' +
+          this.filterPath +
+          '&filterName=' +
+          this.filterName +
+          '&filterType=' +
+          this.filterType
       )
       .subscribe((data) => {
         console.log(data);
         this.paths = data;
       });
 
+    /*
     this.http
       .get(
         'http://localhost:8081/inputs/filter/result?post=' +
           this.input +
-          '&filterPath=D:/DATA/Lucene_test&filterName=test2&filterType=.txt',
-        {
-          responseType: 'text',
-        }
+          '&filterPath=' +
+          this.filterPath +
+          '&filterName=' +
+          this.filterName +
+          '&filterType=' +
+          this.filterType,
+        { responseType: 'text' }
       )
       .subscribe((data) => {
         console.log(data);
         this.text = data;
       });
+    */
   }
 }
