@@ -13,6 +13,7 @@ export class SearchFieldComponent {
   message1: string = '';
   message2: string = '';
   message3: string = '';
+  message4: string = '';
 
   ngOnInit() {
     this.filterService.currentMessage1.subscribe(
@@ -24,6 +25,9 @@ export class SearchFieldComponent {
     this.filterService.currentMessage3.subscribe(
       (message3) => (this.message3 = message3)
     );
+    this.filterService.currentMessage4.subscribe(
+      (message4) => (this.message4 = message4)
+    );
   }
 
   onSubmit(input: { userInput: string }) {
@@ -34,6 +38,7 @@ export class SearchFieldComponent {
         path: this.message1,
         name: this.message2,
         type: this.message3,
+        ignore: this.message4,
       },
     ]);
   }

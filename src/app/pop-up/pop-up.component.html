@@ -11,50 +11,69 @@
     </div>
     <div class="modal-body">
         <form #filterForm="ngForm" (ngSubmit)="setFilter(filterForm.value)">
-            <div>
-                <label for="filterPath">Path</label>
-                <input id="filterPath" name="filterPath" ngModel type=text placeholder={{message1}}>
-            </div>
-            <div>
-                <label for="filterName">Name</label>
-                <input id="filterName" name="filterName" ngModel type=text placeholder={{message2}}>
-            </div>
-            <div>
-                <label for="filterType">Type</label>
-                <select id="filterType" name="filterType" ngModel>
-                    <option value="" disabled selected hidden>{{message3}}</option>>
-                    <option value=".txt">Text</option>
-                    <option value=".json">JSON</option>
-                    <option value=".java">Java</option>
-                    <option value=".xml">XML</option>
-                    <option value=".xlsx">Excel</option>
-                    <option value=".pdf">PDF</option>
-                </select>
-            </div>
-
-            <!--
-                <div class="input-group">
-                    <label for="date">Date</label>
-                    <input id="date" class="form-control" placeholder="yyyy-mm-dd" name="d" ngbDatepicker
-                        #d="ngbDatepicker">
-                    <div class="input-group-append">
-                        <button class="btn calendar" (click)="d.toggle()" type="button">
-                            calendar_icon.svg
-                        </button>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-1">
+                        <label for="filterPath">Path</label>
+                    </div>
+                    <div class="col-md-5">
+                        <input id="filterPath" name="filterPath" ngModel type=text placeholder={{message1}}>
                     </div>
                 </div>
-                <br>
-                <div class="input-group">
-                    <label for="ignore">Ignore</label>
-                    <button type="button" class="btn btn-success">
-                        +
-                    </button>
-                    <input id="ignore" type=text class="form-control" name="ignore">
-                    <button type="button" class="btn btn-danger">
-                        -
-                    </button>
+                <div class="row">
+                    <div class="col-md-1">
+                        <label for="filterName">Name</label>
+                    </div>
+                    <div class="col-md-5">
+                        <input id="filterName" name="filterName" ngModel type=text placeholder={{message2}}>
+                    </div>
                 </div>
-                -->
+                <div class="row">
+                    <div class="col-md-1">
+                        <label for="filterType">Type</label>
+                    </div>
+                    <div class="col-md-5">
+                        <select id="filterType" name="filterType" ngModel>
+                            <option value="" disabled selected hidden>{{message3}}</option>>
+                            <option value=""></option>
+                            <option value=".txt">Text</option>
+                            <option value=".json">JSON</option>
+                            <option value=".xml">XML</option>
+                            <option value=".java">Java</option>
+                            <option value=".docx">Word</option>
+                            <option value=".pdf">PDF</option>
+                            <option value=".xlsx">Excel</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- <button type="button" class="btn btn-danger" (click)="trashFilter()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-trash" viewBox="0 0 16 16">
+                        <path
+                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                        <path
+                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                    </svg>
+                </button> -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-1">
+                        <label for="ignore">Ignore</label>
+                    </div>
+                    <div class="col-md-5 button">
+                        <a href="#" class="myButton">+</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1">
+                        <label for="ignoreList">File</label>
+                    </div>
+                    <div class="col-md-5">
+                        <input id="ignoreList" name="ignoreList" ngModel type=text placeholder={{message4}}>
+                    </div>
+                </div>
+            </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-success" (click)="modal.close('Save click');">
                     Save

@@ -13,10 +13,12 @@ export class PopUpComponent {
   filterPath: any;
   filterName: any;
   filterType: any;
+  ignoreList: any;
 
   message1: string = '';
   message2: string = '';
   message3: string = '';
+  message4: string = '';
 
   constructor(
     private modalService: NgbModal,
@@ -58,22 +60,41 @@ export class PopUpComponent {
     this.filterService.currentMessage3.subscribe(
       (message3) => (this.message3 = message3)
     );
+    this.filterService.currentMessage4.subscribe(
+      (message4) => (this.message4 = message4)
+    );
+  }
+
+  trashFilter() {
+    this.filterService.changeMessage1('');
+    this.filterService.changeMessage2('');
+    this.filterService.changeMessage3('');
+    this.filterService.changeMessage4('');
   }
 
   setFilter(filter: {
     filterPath: String;
     filterName: String;
     filterType: String;
+    ignoreList: String[];
   }) {
     this.filterPath = filter.filterPath;
     this.filterName = filter.filterName;
     this.filterType = filter.filterType;
+    this.ignoreList = filter.ignoreList;
     console.log(
-      this.filterPath + ' / ' + this.filterName + ' / ' + this.filterType
+      this.filterPath +
+        ' / ' +
+        this.filterName +
+        ' / ' +
+        this.filterType +
+        ' / ' +
+        this.ignoreList
     );
 
     this.filterService.changeMessage1(this.filterPath);
     this.filterService.changeMessage2(this.filterName);
     this.filterService.changeMessage3(this.filterType);
+    this.filterService.changeMessage4(this.ignoreList);
   }
 }

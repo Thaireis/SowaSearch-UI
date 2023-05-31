@@ -5,14 +5,17 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class FilterService {
-  private messageSource1 = new BehaviorSubject<string>('...');
+  private messageSource1 = new BehaviorSubject<string>('');
   currentMessage1 = this.messageSource1.asObservable();
 
-  private messageSource2 = new BehaviorSubject<string>('...');
+  private messageSource2 = new BehaviorSubject<string>('');
   currentMessage2 = this.messageSource2.asObservable();
 
-  private messageSource3 = new BehaviorSubject<string>('...');
+  private messageSource3 = new BehaviorSubject<string>('');
   currentMessage3 = this.messageSource3.asObservable();
+
+  private messageSource4 = new BehaviorSubject<string>('');
+  currentMessage4 = this.messageSource4.asObservable();
 
   constructor() {}
 
@@ -26,5 +29,9 @@ export class FilterService {
 
   changeMessage3(message3: string) {
     this.messageSource3.next(message3);
+  }
+
+  changeMessage4(message4: string) {
+    this.messageSource4.next(message4);
   }
 }

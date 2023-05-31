@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent },
   { path: 'search/:input', component: SearchComponent },
   {
-    path: 'search/:input/:path/:name/:type',
+    path: 'search/:input/:path/:name/:type/:ignore',
     component: SearchComponent,
   },
 ];

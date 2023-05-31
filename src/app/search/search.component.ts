@@ -19,6 +19,7 @@ export class SearchComponent implements OnInit {
   filterPath: any;
   filterName: any;
   filterType: any;
+  ignoreList: any;
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {
     this.linkFile = 'file:///';
@@ -35,6 +36,7 @@ export class SearchComponent implements OnInit {
     this.filterPath = this.route.snapshot.params['path'];
     this.filterName = this.route.snapshot.params['name'];
     this.filterType = this.route.snapshot.params['type'];
+    this.ignoreList = this.route.snapshot.params['ignore'];
 
     console.log(this.input);
     console.log(
@@ -43,7 +45,9 @@ export class SearchComponent implements OnInit {
         ' | ' +
         this.filterName +
         ' | ' +
-        this.filterType
+        this.filterType +
+        ' | ' +
+        this.ignoreList
     );
 
     this.http
@@ -55,7 +59,9 @@ export class SearchComponent implements OnInit {
           '&filterName=' +
           this.filterName +
           '&filterType=' +
-          this.filterType
+          this.filterType +
+          '&ignoreList=' +
+          this.ignoreList
       )
       .subscribe((data) => {
         console.log(data);
@@ -71,30 +77,32 @@ export class SearchComponent implements OnInit {
           '&filterName=' +
           this.filterName +
           '&filterType=' +
-          this.filterType
+          this.filterType +
+          '&ignoreList=' +
+          this.ignoreList
       )
       .subscribe((data) => {
         console.log(data);
         this.paths = data;
       });
 
-    /*
-    this.http
-      .get(
-        'http://localhost:8081/inputs/filter/result?post=' +
-          this.input +
-          '&filterPath=' +
-          this.filterPath +
-          '&filterName=' +
-          this.filterName +
-          '&filterType=' +
-          this.filterType,
-        { responseType: 'text' }
-      )
-      .subscribe((data) => {
-        console.log(data);
-        this.text = data;
-      });
-    */
+    // this.http
+    //   .get(
+    //     'http://localhost:8081/inputs/filter/result?post=' +
+    //       this.input +
+    //       '&filterPath=' +
+    //       this.filterPath +
+    //       '&filterName=' +
+    //       this.filterName +
+    //       '&filterType=' +
+    //       this.filterType +
+    //       '&ignoreList=' +
+    //       this.ignoreList,
+    //     { responseType: 'text' }
+    //   )
+    //   .subscribe((data) => {
+    //     console.log(data);
+    //     this.text = data;
+    //   });
   }
 }
