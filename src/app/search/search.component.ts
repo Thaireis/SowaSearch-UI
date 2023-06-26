@@ -19,6 +19,7 @@ export class SearchComponent implements OnInit {
   filterPath: any;
   filterName: any;
   filterType: any;
+  maxDepth: any;
   ignoreList: any;
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {
@@ -36,6 +37,7 @@ export class SearchComponent implements OnInit {
     this.filterPath = this.route.snapshot.params['path'];
     this.filterName = this.route.snapshot.params['name'];
     this.filterType = this.route.snapshot.params['type'];
+    this.maxDepth = this.route.snapshot.params['depth'];
     this.ignoreList = this.route.snapshot.params['ignore'];
 
     console.log(this.input);
@@ -46,6 +48,8 @@ export class SearchComponent implements OnInit {
         this.filterName +
         ' | ' +
         this.filterType +
+        ' | ' +
+        this.maxDepth +
         ' | ' +
         this.ignoreList
     );
@@ -60,6 +64,8 @@ export class SearchComponent implements OnInit {
           this.filterName +
           '&filterType=' +
           this.filterType +
+          '&maxDepth=' +
+          this.maxDepth +
           '&ignoreList=' +
           this.ignoreList
       )
@@ -78,6 +84,8 @@ export class SearchComponent implements OnInit {
           this.filterName +
           '&filterType=' +
           this.filterType +
+          '&maxDepth=' +
+          this.maxDepth +
           '&ignoreList=' +
           this.ignoreList
       )

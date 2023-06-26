@@ -17,6 +17,9 @@ export class FilterService {
   private messageSource4 = new BehaviorSubject<string>('');
   currentMessage4 = this.messageSource4.asObservable();
 
+  private messageSource5 = new BehaviorSubject<number>(0);
+  currentMessage5 = this.messageSource5.asObservable();
+
   constructor() {}
 
   changeMessage1(message1: string) {
@@ -33,5 +36,9 @@ export class FilterService {
 
   changeMessage4(message4: string) {
     this.messageSource4.next(message4);
+  }
+
+  changeMessage5(message5: number) {
+    this.messageSource5.next(message5);
   }
 }

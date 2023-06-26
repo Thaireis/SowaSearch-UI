@@ -13,12 +13,14 @@ export class PopUpComponent {
   filterPath: any;
   filterName: any;
   filterType: any;
+  maxDepth: any;
   ignoreList: any;
 
   message1: string = '';
   message2: string = '';
   message3: string = '';
   message4: string = '';
+  message5: number = 0;
 
   constructor(
     private modalService: NgbModal,
@@ -63,6 +65,9 @@ export class PopUpComponent {
     this.filterService.currentMessage4.subscribe(
       (message4) => (this.message4 = message4)
     );
+    this.filterService.currentMessage5.subscribe(
+      (message5) => (this.message5 = message5)
+    );
   }
 
   trashFilter() {
@@ -70,17 +75,20 @@ export class PopUpComponent {
     this.filterService.changeMessage2('');
     this.filterService.changeMessage3('');
     this.filterService.changeMessage4('');
+    this.filterService.changeMessage5(0);
   }
 
   setFilter(filter: {
     filterPath: String;
     filterName: String;
     filterType: String;
+    maxDepth: number;
     ignoreList: String[];
   }) {
     this.filterPath = filter.filterPath;
     this.filterName = filter.filterName;
     this.filterType = filter.filterType;
+    this.maxDepth = filter.maxDepth;
     this.ignoreList = filter.ignoreList;
     console.log(
       this.filterPath +
@@ -89,6 +97,8 @@ export class PopUpComponent {
         ' / ' +
         this.filterType +
         ' / ' +
+        this.maxDepth +
+        ' / ' +
         this.ignoreList
     );
 
@@ -96,5 +106,6 @@ export class PopUpComponent {
     this.filterService.changeMessage2(this.filterName);
     this.filterService.changeMessage3(this.filterType);
     this.filterService.changeMessage4(this.ignoreList);
+    this.filterService.changeMessage5(this.maxDepth);
   }
 }
